@@ -24,8 +24,7 @@ func main() {
 	flag.BoolVar(&dumpMode, "d", false, "")
 	flag.BoolVar(&dumpMode, "dump", false, "")
 
-	flag.BoolVar(&remMode, "r", false, "")
-	flag.BoolVar(&remMode, "remove", false, "")
+	flag.BoolVar(&remMode, "rm", false, "")
 
 	flag.Usage = func() {
 		fmt.Fprint(os.Stderr, usage)
