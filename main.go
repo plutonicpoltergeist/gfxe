@@ -38,7 +38,10 @@ func main() {
 			log.Fatalf(errGetPattern, err)
 		}
 
-		println(strings.Join(pats, "\n"))
+		if len(pats) > 0 {
+			println(strings.Join(pats, "\n"))
+		}
+
 		return
 	case saveMode:
 		name := flag.Arg(0)
@@ -69,6 +72,7 @@ func main() {
 
 	p := pool.New().WithMaxGoroutines(10)
 	for _, pat := range pats {
+		pat := pat
 		p.Go(func() {
 			operator := "grep"
 			if pat.Engine != "" {
