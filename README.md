@@ -159,7 +159,7 @@ Download a pre-built binary from [release page](https://github.com/dwisiswant0/g
 If you've got Go *1.19+* installed and configured you can install `gfx` with:
 
 ```console
-go install github.com/dwisiswant0/gfx/...
+go install github.com/dwisiswant0/gfx@latest
 ```
 
 #### from Source
