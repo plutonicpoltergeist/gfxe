@@ -3,6 +3,13 @@
 A wrapper around grep to avoid typing common patterns.
 
 > **Note**: This is a fork version of [gf](https://github.com/tomnomnom/gf) developed by [Tom Hudson](https://github.com/tomnomnom) that includes several improvements.
+>
+> The changes made to the `gf` add several new features to the `gfx`. Here is a summary of the changes:
+>
+> - Expands the available flags, including adding a flag for removing a search pattern(s) and making the flags more concise.
+> - Support globbing pattern name for conducting searches, dumping, and removing patterns.
+> - The `getPatterns` function was refactored to take a pattern name as a parameter, enabling it to only retrieve the designated pattern instead of all the patterns that are available.
+> - `gfx` utilizes the pool lib to concurrently perform various dumping, removal, and search ops with a max. of **10** concurrent goroutines.
 
 ## What? Why?
 
