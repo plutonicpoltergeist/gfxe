@@ -44,6 +44,11 @@ func main() {
 
 		return
 	case saveMode:
+		if flag.NArg() < 3 {
+			flag.Usage()
+			log.Fatal(errNoPatternInput)
+		}
+
 		name := flag.Arg(0)
 		flags := flag.Arg(1)
 		pattern := flag.Arg(2)
@@ -55,9 +60,9 @@ func main() {
 	}
 
 	patName := flag.Arg(0)
-	files := flag.Arg(1)
-	if files == "" {
-		files = "."
+	files := "."
+	if flag.NArg() > 1 {
+		files = flag.Arg(1)
 	}
 
 	if patName == "" {

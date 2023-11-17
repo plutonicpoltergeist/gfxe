@@ -2,7 +2,8 @@
 
 A wrapper around grep to avoid typing common patterns.
 
-> **Note**: This is a fork version of [gf](https://github.com/tomnomnom/gf) developed by [Tom Hudson](https://github.com/tomnomnom) that includes several improvements.
+> [!IMPORTANT]
+> This is a fork version of [gf](https://github.com/tomnomnom/gf) developed by [Tom Hudson](https://github.com/tomnomnom) that includes several improvements.
 >
 > The changes made to the `gf` add several new features to the `gfx`. Here is a summary of the changes:
 >
@@ -77,7 +78,8 @@ You can supply a pattern name by entering a glob pattern:
 $ gfx google-*
 ```
 
-> **Note**: Keep in mind that the pattern name serves as a globbing for both the dump and remove _(--rm)_ flags.
+> [!IMPORTANT]
+> Keep in mind that the pattern name serves as a globbing for both the dump and remove _(--rm)_ flags.
 
 ```console
 $ gfx -d google-*
@@ -147,7 +149,8 @@ In order to utilize a different engine, add `engine: <other tool>` to the releva
 }
 ```
 
-> **Warning**: Different engines use different flags, so in the example above, the flag `E` has to be removed from the `aws-keys.json` file in order for ag to successfully run.
+> [!NOTE]
+> Different engines use different flags, so in the example above, the flag `E` has to be removed from the `aws-keys.json` file in order for `ag` to successfully run.
 
 
 ## Install
