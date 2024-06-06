@@ -1,6 +1,6 @@
 package main
 
-const usage = `gfx [OPTIONS...] pattern-name
+const usage = `gfex [OPTIONS...] pattern-name
 
 Options:
   -s, --save        Save a pattern
@@ -10,9 +10,9 @@ Options:
   -h, --help        Print this helps
 
 Examples:
-  gfx aws*
-  gfx -d aws*
-  gfx --rm aws*
-  gfx --save pattern-name '-Hnri' 'search-pattern'
+  gfxe aws*
+  gfxe -d aws*
+  gfxe --rm aws*
+  gfxe --save pattern-name '-Hnri' 'search-pattern'
 
 `

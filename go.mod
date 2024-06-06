@@ -1,4 +1,4 @@
-module github.com/dwisiswant0/gfx
+module github.com/pluonicpoltergeist/gfex
 
 go 1.19
 
