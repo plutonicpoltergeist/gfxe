@@ -8,6 +8,7 @@ Options:
   -d, --dump        Print the grep command of patterns instead
       --rm          Remove patterns
   -h, --help        Print this helps
+  -i, --hidden      Include hidden files and folders
 
 Examples:
   gfxe aws*

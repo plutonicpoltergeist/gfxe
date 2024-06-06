@@ -13,7 +13,7 @@ import (
 )
 
 func main() {
-	var saveMode, listMode, dumpMode, remMode bool
+	var saveMode, listMode, dumpMode, remMode, hidden bool
 
 	flag.BoolVar(&saveMode, "s", false, "")
 	flag.BoolVar(&saveMode, "save", false, "")
@@ -25,6 +25,9 @@ func main() {
 	flag.BoolVar(&dumpMode, "dump", false, "")
 
 	flag.BoolVar(&remMode, "rm", false, "")
+
+	flag.BoolVar(&hidden, "i", false, "")
+	flag.BoolVar(&hidden, "hidden", false, "")
 
 	flag.Usage = func() {
 		fmt.Fprint(os.Stderr, usage)
@@ -89,18 +92,23 @@ func main() {
 				log.Fatalf(errOperatorCmdNotFound, operator)
 			}
 
+			var patternFlags = "--exclude='.*' " + pat.Flags
+			if hidden {
+				patternFlags = pat.Flags
+			}
+
 			switch {
 			case dumpMode:
-				fmt.Printf("[%s] %s %s %q %s\n", pat.Filename, operator, pat.Flags, pat.Pattern, files)
+				fmt.Printf("[%s] %s %s %q %s\n", pat.Filename, operator, patternFlags, pat.Pattern, files)
 			case remMode:
 				_ = os.Remove(pat.Filepath)
 			default:
 				var cmd *exec.Cmd
 
 				if isStdin() {
-					cmd = exec.Command(operator, pat.Flags, pat.Pattern)
+					cmd = exec.Command(operator, pat.Flags, patternFlags)
 				} else {
-					cmd = exec.Command(operator, pat.Flags, pat.Pattern, files)
+					cmd = exec.Command(operator, pat.Flags, patternFlags, files)
 				}
 				doSearch(cmd)
 			}
