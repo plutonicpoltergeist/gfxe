@@ -1,16 +1,6 @@
-# gfx
+# gfxe
 
 A wrapper around grep to avoid typing common patterns.
-
-> [!IMPORTANT]
-> This is a fork version of [gf](https://github.com/tomnomnom/gf) developed by [Tom Hudson](https://github.com/tomnomnom) that includes several improvements.
->
-> The changes made to the `gf` add several new features to the `gfx`. Here is a summary of the changes:
->
-> - Expands the available flags, including adding a flag for removing a search pattern(s) and making the flags more concise.
-> - Support globbing pattern name for conducting searches, dumping, and removing patterns.
-> - The `getPatterns` function was refactored to take a pattern name as a parameter, enabling it to only retrieve the designated pattern instead of all the patterns that are available.
-> - `gfx` utilizes the pool lib to concurrently perform various dumping, removal, and search ops with a max. of **10** concurrent goroutines.
 
 ## What? Why?
 
@@ -29,8 +19,8 @@ results because there are non to find, or because you screwed up writing the pat
 It's fairly easy!
 
 ```console
-$ gfx --help
-gfx [OPTIONS...] pattern-name
+$ gfxe --help
+gfxe [OPTIONS...] pattern-name
 
 Options:
   -s, --save        Save a pattern
@@ -40,10 +30,10 @@ Options:
   -h, --help        Print this helps
 
 Examples:
-  gfx aws*
-  gfx -d aws*
-  gfx --rm aws*
-  gfx --save pattern-name '-Hnri' 'search-pattern'
+  gfxe aws*
+  gfxe -d aws*
+  gfxe --rm aws*
+  gfxe --save pattern-name '-Hnri' 'search-pattern'
 
 ```
 
@@ -52,7 +42,7 @@ Examples:
 I want to run grep with the pattern below all at once:
 
 ```console
-$ gfx -l 2>&1 | grep google
+$ gfxe -l 2>&1 | grep google
 google-account-type_secrets
 google-api-key_secrets
 google-calendar-uri_secrets
@@ -75,14 +65,14 @@ google-url_secrets
 You can supply a pattern name by entering a glob pattern:
 
 ```bash
-$ gfx google-*
+$ gfxe google-*
 ```
 
 > [!IMPORTANT]
 > Keep in mind that the pattern name serves as a globbing for both the dump and remove _(--rm)_ flags.
 
 ```console
-$ gfx -d google-*
+$ gfxe -d google-*
 [google-account-type_secrets] grep -aHnoPr "google[_-]?account[_-]?type(=| =|:| :)" .
 [google-calendar-uri_secrets] grep -aHnoPr "https://www\\.google\\.com/calendar/embed\\?src=[A-Za-z0-9%@&;=\\-_\\./]+" .
 [google-client-email_secrets] grep -aHnoPr "google[_-]?client[_-]?email(=| =|:| :)" .
@@ -120,13 +110,13 @@ $ cat ~/.gf/php-sources-multiple.json
 You can use the `-save` flag to create pattern files from the command line:
 
 ```bash
-$ gfx --save 'php-serialized' '-HnrE' '(a:[0-9]+:{|O:[0-9]+:"|s:[0-9]+:")'
+$ gfxe --save 'php-serialized' '-HnrE' '(a:[0-9]+:{|O:[0-9]+:"|s:[0-9]+:")'
 ```
 
 Or if you want to remove 'em:
 
 ```bash
-$ gfx --rm 'php-serialized'
+$ gfxe --rm 'php-serialized'
 ```
 
 ### Using custom engines
@@ -152,17 +142,12 @@ In order to utilize a different engine, add `engine: <other tool>` to the releva
 > [!NOTE]
 > Different engines use different flags, so in the example above, the flag `E` has to be removed from the `aws-keys.json` file in order for `ag` to successfully run.
 
+#### Install with Go
 
-## Install
-
-Download a pre-built binary from [release page](https://github.com/dwisiswant0/gfx/releases), unpack and run! Or
-
-#### with Go
-
-If you've got Go *1.19+* installed and configured you can install `gfx` with:
+If you've got Go *1.19+* installed and configured you can install `gfxe` with:
 
 ```console
-go install github.com/dwisiswant0/gfx@latest
+go install github.com/plutonicpoltergeist/gfxe@latest
 ```
 
 #### from Source
@@ -171,7 +156,7 @@ Clone this repository, and run:
 
 ```console
 go build ./...
-install gfx $GOBIN
+install gfxe $GOBIN
 ```
 
 To get started with patterns quickly, see also:
@@ -182,4 +167,4 @@ To get started with patterns quickly, see also:
 
 ## License
 
-`gfx` is distributed under MIT. Contributions are welcome! See `LICENSE` file.
+`gfxe` is distributed under MIT. Contributions are welcome! See `LICENSE` file.
