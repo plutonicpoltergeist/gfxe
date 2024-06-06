@@ -1,5 +1,5 @@
 builds:
-  - binary: gfex
+  - binary: gfxe
     main: .
     ldflags:
       - -s -w

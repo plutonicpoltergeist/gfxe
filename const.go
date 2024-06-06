@@ -1,6 +1,6 @@
 package main
 
-const usage = `gfex [OPTIONS...] pattern-name
+const usage = `gfxe [OPTIONS...] pattern-name
 
 Options:
   -s, --save        Save a pattern
