@@ -1,4 +1,4 @@
-module github.com/pluonicpoltergeist/gfxe
+module github.com/plutonicpoltergeist/gfxe
 
 go 1.19
 
